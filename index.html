@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Програма з відео, звуком, картою та калькулятором</title>
+    <style>
+      body {
+        background-color: #eee;
+        margin: 0;
+        padding: 0;
+      }
+      
+      #video-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+      }
+      
+      #container {
+        width: 80%;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      
+      canvas {
+        border: 1px solid #ddd;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <video id="video-bg" autoplay muted loop>
+      <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
+    </video>
+    
+    <div id="container">
+      <h1>Програма з відео, звуком, картою та калькулятором</h1>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+
+
+      <video width="320" height="240" controls>
+  		<source src="Rick Astley - Never Gonna Give You Up (Official Music Video).mp4" type="video/mp4">
+  		<source src="movie.ogg" type="video/ogg">
+  	  </video>
+  	
+      <audio controls>
+        <source src="sound.mp3" type="audio/mpeg">
+        <source src="zatuhayuschiy-ptichiy-svist.ogg" type="audio/ogg">
+      </audio>
+      
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d220052.7440278299!2d-74.030134!3d40.744764!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQ1JzI1LjciTiA3NMKwMTAnMzYuMiJF!5e0!3m2!1sen!2sus!4v1620802874128!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      
+      <img src="https://www.w3schools.com/html/workplace.jpg" alt="Workplace" usemap="#workmap">
+      <map name="workmap">
+        <area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm">
+        <area shape="rect" coords="290,172,333,250" alt="Phone" href="phone.htm">
+
+      <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    	<script>
+
+      		var canvas = document.getElementById("myCanvas");
+      		var ctx = canvas.getContext("2d");
+
+
+      		var x = 50;
+      		var y = 50;
+      		var speedX = 5;
+      		var speedY = 5;
+
+
+      		function drawCircle(x, y, radius, color) {
+        		ctx.beginPath();
+        		ctx.arc(x, y, radius, 0, Math.PI * 2);
+        		ctx.fillStyle = color;
+        		ctx.fill();
+        		ctx.closePath();
+      		}
+
+
+      		function update() {
+
+        		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+        		drawCircle(x, y, 30, "blue");
+
+
+        		x += speedX;
+       			y += speedY;
+
+
+        		if (x < 30 || x > canvas.width - 30) {
+          			speedX = -speedX;
+        		}
+        		if (y < 30 || y > canvas.height - 30) {
+          			speedY = -speedY;
+        		}
+      		}
+
+
+      		setInterval(update, 10);
+    	</script>
